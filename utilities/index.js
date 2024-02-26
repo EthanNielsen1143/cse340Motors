@@ -6,7 +6,7 @@ const Util = {}
  ************************** */
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications()
-  console.log(data);
+  console.log(data.vehicle);
   let list = "<ul>"
   list += '<li><a href="/" title="Home page">Home</a></li>'
   data.rows.forEach((row) => {
@@ -36,11 +36,10 @@ Util.buildClassificationGrid = async function(data){
       grid += '<li>'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
-      + 'details"><img src="' + vehicle.inv_thumbnail 
+      + 'details"><img src="' + vehicle.inv_image
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
       grid += '<h2>'
       grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
@@ -58,6 +57,24 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+Util.buildDetailGrid = async function(data){
+  let grid = ''
+  if(data.length > 0){
+    grid += '<div id="detail-display">';
+    grid += '<img src="' + data[0].inv_image + '" alt="Picture of vehicle">';
+    grid += '<div id="detail-section">';
+    grid += '<h1>' + data[0].inv_make + ` ` + data[0].inv_model + ` Details</h1>`;
+    grid += '<h2>Price: $' + new Intl.NumberFormat('en-US').format(data[0].inv_price) + '</h2>';
+    grid += '<h2>Description: ' + data[0].inv_description + '</h2>';
+    grid += '<h2>Color: ' + data[0].inv_color + '</h2>'; 
+    grid += '<h2>Miles: ' + data[0].inv_miles + '</h2>'; 
+    grid += '</div>';
+    grid += '</div>';
+  } else {
+    grid += '<p> Car could not be found </p>'
+  }
+  return grid
+}
 
 
 module.exports = Util

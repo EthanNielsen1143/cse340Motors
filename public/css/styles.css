@@ -330,4 +330,128 @@ section {
   #add-ons {
     width: 45%;
   }
+
+  #inv-display {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-background);
+    color: var(--primary-text); 
+    max-width: 100%;
+  }
+  
+  #inv-display li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    border-bottom: 5px solid var(--primary-text);
+    background-color: rgb(126, 128, 131);
+    color: black;
+  }
+  
+  #inv-display li:nth-child(odd) {
+    background-color: #242333;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    border-bottom: 5px solid var(--primary-text);
+  }
+  
+  #inv-display li img {
+    border-radius: 20px;
+    max-width: 300px;
+  }
+  
+  #inv-display a {
+    color: black;
+  }
+  
+  #inv-display a:hover {
+    transition: 1s;
+    padding: 10px;
+  }
+  
+  .namePrice {
+    background-color: var(--main-accent);
+    padding: 20px;
+    border-radius: 20px;
+  }
+  
+  #detail-display {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+  }
+  #detail-section {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    max-width: 100%;
+  }
+  
+  #detail-display img {
+    max-width: 400px;
+    border-radius: 20px;
+  }
+}
+
+#inv-display {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-background);
+  color: var(--primary-text);
+}
+
+#inv-display li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  border-bottom: 5px solid var(--primary-text);
+  background-color: rgb(126, 128, 131);
+  color: black;
+}
+
+#inv-display li:nth-child(odd) {
+  background-color: #242333;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  border-bottom: 5px solid var(--primary-text);
+}
+
+#inv-display li img {
+  border-radius: 20px;
+  max-width: 300px;
+}
+
+#inv-display a {
+  color: black;
+}
+
+#inv-display a:hover {
+  transition: 1s;
+  padding: 30px;
+}
+
+.namePrice {
+  background-color: var(--main-accent);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+#detail-display {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+#detail-section {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+#detail-display img {
+  max-width: 400px;
+  border-radius: 20px;
 }
