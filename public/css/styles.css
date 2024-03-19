@@ -455,3 +455,37 @@ section {
   max-width: 400px;
   border-radius: 20px;
 }
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--main-accent);
+  padding: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--main-accent);
+  padding: 20px;
+}
+
+.input {
+  width: fit-content;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  border: 2px solid var(--primary-text);
+}
+
+.submit-button {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  border: 2px solid var(--primary-text);
+  background-color: var(--primary-text);
+  color: var(--primary-background);
+}
+
