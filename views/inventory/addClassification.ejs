@@ -1,0 +1,17 @@
+<title> <% title %> </title>
+<h1> <% title %> </h1>
+
+<body> 
+    <%- messages() %>
+    <form action='/inv/add-classification' method="post"> 
+        <div class="add-classification-container">
+            <h2>Add Classification:</h2>
+            <label for="classification">Classification Name:</label>
+            <i>NAME MUST BE ALPHABETICAL CHARACTERS ONLY</i>
+            <div>
+                <input type="text" id="invclassification" name="classification_name" required>
+            </div>
+        </div>
+        <button class='submit-button' type="submit">Add Classification</button>
+    </form>
+</body> 

@@ -1,4 +1,7 @@
+const { restart } = require("nodemon")
 const invModel = require("../models/inventory-model")
+const classificationModel = require("../models/classification-model");
+const inventoryAddModel = require("../models/inventory-add-model");
 const utilities = require("../utilities/")
 
 const invCont = {}
@@ -33,4 +36,107 @@ invCont.buildByInvId = async function (req, res, next) {
   })
 }
 
-module.exports = invCont;
+invCont.buildManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render('./inventory/management', {
+    title: 'Managment',
+    nav, 
+  })
+}
+
+invCont.buildAddClassification = async function (req, res) {
+  let nav = await utilities.getNav()
+  //loads page
+  res.render("inventory/addClassification", {
+    title: 'Add Classification',
+    nav, 
+  })
+};
+
+
+invCont.addClassification = async function (req, res) {
+  let nav = await utilities.getNav()
+  //runs model 
+  const { classification_name } = req.body;
+  const classificationResult = await classificationModel.addClassification(classification_name)
+    // error message middleware
+    if (classificationResult) {
+      req.flash(
+        "notice",
+        `You successfully added ${classification_name} as a classification.`
+        )
+        let nav = await utilities.getNav()
+        res.status(201).render('inventory/management', {
+          title: "Management",
+          nav,
+        })
+      } else {
+        req.flash("Sorry, the classification could not be added")
+        res.status(201).render('inventory/addClassification', {
+          title: "Add Classification",
+          nav,
+        })
+      }
+    }
+    
+    invCont.buildAddInventory = async function (req, res) {
+      let nav = await utilities.getNav()
+      const classificationList = await utilities.buildClassificationList()
+      res.render('inventory/addInventory', {
+        title: "Add Inventory",
+        nav,
+        classificationList,
+      })
+    }
+
+    invCont.addInventory = async function (req, res) {
+      let nav = await utilities.getNav()
+      const {
+        classification_id,
+        inv_make,
+        inv_model,
+        inv_year,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_miles,
+        inv_color
+       } = req.body;
+
+       console.log(classification_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color)
+       
+      const invAddResult = await inventoryAddModel.addInventory(
+        classification_id,
+        inv_make,
+        inv_model,
+        inv_year,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_miles,
+        inv_color
+      )
+
+      if (invAddResult) {
+        req.flash(
+          "notice",
+          `You have successfully added the ${inv_make} ${inv_model} to the ${classification_id} classification`
+        )
+        res.status(201).render("inventory/management", {
+          title: "Management",
+          nav, 
+        })
+      } else {
+        req.flash("notice", "Sorry, the vehicle was not added")
+        res.status(201).render("inventory/add-inventory", {
+          title: "Add Inventory",
+          nav,
+        })
+      }
+    }
+
+    module.exports = invCont;
+    
+    
