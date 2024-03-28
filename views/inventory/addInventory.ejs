@@ -9,12 +9,12 @@
             <%- classificationList %>
             <input type="text" id="invmake" name="inv_make" placeholder="Make" required>
             <input type="text" id="invmodel" name="inv_model" placeholder="Model" required>
-            <input type="text" id="invyear" name="inv_year" placeholder="Year (XXXX)" required>
-            <input type="text" id="invdescription" name="inv_description" placeholder="Description" size="45" required>
+            <input type="number" id="invyear" name="inv_year" placeholder="Year (XXXX)" required>
+            <textarea id="invdescription" name="inv_description" placeholder="Description" rows="4" cols="45" required></textarea>
             <input type="text" id="invimage" name="inv_image" value="/images/vehicles/no-image.png" size="35" required>
             <input type="text" id="invthumbnail" name="inv_thumbnail" value="/images/vehicles/no-image-tn.png" size="35" required>
-            <input type="text" id="invprice" name="inv_price" placeholder="Price" required>
-            <input type="text" id="invmiles" name="inv_miles" placeholder="Miles" required>
+            <input type="number" id="invprice" name="inv_price" placeholder="Price" required>
+            <input type="number" id="invmiles" name="inv_miles" placeholder="Miles" required>
             <input type="text" id="invcolor" name="inv_color" placeholder="Color" required>
         </div>
         <button class="submit-button" type="submit">Add Inventory</button>
