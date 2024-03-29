@@ -18,6 +18,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
     title: className + " vehicles",
     nav,
     grid,
+    errors: null,
   });
 };
 
@@ -33,6 +34,7 @@ invCont.buildByInvId = async function (req, res, next) {
     title: `${carMake} ${carModel}`,
     nav,
     grid,
+    errors: null,
   });
 };
 
@@ -41,6 +43,7 @@ invCont.buildManagement = async function (req, res, next) {
   res.render("./inventory/management", {
     title: "Managment",
     nav,
+    errors: null,
   });
 };
 
@@ -89,6 +92,7 @@ invCont.buildAddInventory = async function (req, res) {
     title: "Add Inventory",
     nav,
     classificationList,
+    errors: null,
   });
 };
 
@@ -106,19 +110,6 @@ invCont.addInventory = async function (req, res) {
     inv_miles,
     inv_color,
   } = req.body;
-
-  console.log(
-    classification_id,
-    inv_make,
-    inv_model,
-    inv_year,
-    inv_description,
-    inv_image,
-    inv_thumbnail,
-    inv_price,
-    inv_miles,
-    inv_color
-  );
 
   const invAddResult = await inventoryAddModel.addInventory(
     classification_id,
@@ -147,6 +138,7 @@ invCont.addInventory = async function (req, res) {
     res.status(201).render("inventory/add-inventory", {
       title: "Add Inventory",
       nav,
+      errors: null,
     });
   }
 };

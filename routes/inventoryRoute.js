@@ -19,6 +19,8 @@ router.post(
 router.get("/add-inventory", invController.buildAddInventory);
 router.post(
   "/add-inventory",
+  invChecks.inventoryRule(),
+  invChecks.checkInventoryData,
   utilities.handleErrors(invController.addInventory)
 );
 

@@ -11,6 +11,7 @@ accCont.buildLogin = async function (req, res, next) {
     res.render('./account/login', {
         title: 'Login',
         nav,
+        errors: null,
     })
 }
 
@@ -19,6 +20,7 @@ accCont.buildRegister = async function (req, res, next) {
     res.render('./account/register', {
         title: 'Register',
         nav,
+        errors: null,
     })
 }
 
