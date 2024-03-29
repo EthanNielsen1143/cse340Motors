@@ -14,16 +14,24 @@
     <form action='/inv/add-inventory' method="post"> 
         <div class="form-container">
             <%- classificationList %>
-            <input type="text" class="input" id="invmake" name="inv_make" placeholder="Make" required>
-            <input type="text" class="input" id="invmodel" name="inv_model" placeholder="Model" required>
-            <input type="number" class="input" id="invyear" name="inv_year" placeholder="Year (XXXX)" required>
-            <textarea class="input" id="invdescription" name="inv_description" placeholder="Description" rows="4" cols="45" required></textarea>
-            <input type="text" class="input" id="invimage" name="inv_image" value="/images/vehicles/no-image.png" size="35" required>
-            <input type="text" class="input" id="invthumbnail" name="inv_thumbnail" value="/images/vehicles/no-image-tn.png" size="35" required>
-            <input type="number" class="input" id="invprice" name="inv_price" placeholder="Price" required>
-            <input type="number" class="input" id="invmiles" name="inv_miles" placeholder="Miles" required>
-            <input type="text" class="input" id="invcolor" name="inv_color" placeholder="Color" required>
-        </div>
+            <input type="text" class="input" id="invmake" name="inv_make" placeholder="Make" required <% if(locals.inv_make) { %> value="<%= locals.inv_make %>" <% } %>>
+
+            <input type="text" class="input" id="invmodel" name="inv_model" placeholder="Model" required <% if(locals.inv_model) { %> value="<%= locals.inv_model %>" <% } %>>
+            
+            <input type="number" class="input" id="invyear" name="inv_year" placeholder="Year (XXXX)" required <% if(locals.inv_year) { %> value="<%= locals.inv_year %>" <% } %>>
+            
+            <textarea class="input" id="invdescription" name="inv_description" placeholder="Description" rows="4" cols="45" required><%= locals.inv_description %></textarea>
+            
+            <input type="text" class="input" id="invimage" name="inv_image" value="/images/vehicles/no-image.png" size="35" required <% if(locals.inv_image) { %> value="<%= locals.inv_image %>" <% } %>>
+            
+            <input type="text" class="input" id="invthumbnail" name="inv_thumbnail" value="/images/vehicles/no-image-tn.png" size="35" required <% if(locals.inv_thumbnail) { %> value="<%= locals.inv_thumbnail %>" <% } %>>
+            
+            <input type="number" class="input" id="invprice" name="inv_price" placeholder="Price" required <% if(locals.inv_price) { %> value="<%= locals.inv_price %>" <% } %>>
+            
+            <input type="number" class="input" id="invmiles" name="inv_miles" placeholder="Miles" required <% if(locals.inv_miles) { %> value="<%= locals.inv_miles %>" <% } %>>
+            
+            <input type="text" class="input" id="invcolor" name="inv_color" placeholder="Color" required <% if(locals.inv_color) { %> value="<%= locals.inv_color %>" <% } %>>
+            
         <button class="submit-button" type="submit">Add Inventory</button>
     </form>
 </body>
